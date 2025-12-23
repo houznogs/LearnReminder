@@ -1,10 +1,3 @@
-//
-//  LearnReminderApp.swift
-//  LearnReminder
-//
-//  Created by Song Zhou on 2025-12-23.
-//
-
 import SwiftUI
 
 @main
