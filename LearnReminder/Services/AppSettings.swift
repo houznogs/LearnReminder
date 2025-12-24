@@ -7,6 +7,8 @@ struct AppSettings {
         static let reminderHour = "reminderHour"
         static let reminderMinute = "reminderMinute"
         static let lastFetchDate = "lastFetchDate"
+        static let languageCode = "languageCode"
+        static let tone = "tone"
     }
 
     // MARK: - Calendar URL
@@ -48,6 +50,36 @@ struct AppSettings {
         defaults.set(value, forKey: Key.lastFetchDate)
     }
 
+    // MARK: - Language & Tone
+
+    static func appLanguage() -> AppLanguage {
+        if let stored = defaults.string(forKey: Key.languageCode),
+           let language = AppLanguage(rawValue: stored) {
+            return language
+        }
+        if let preferred = Locale.preferredLanguages.first?.lowercased(),
+           preferred.contains("zh") {
+            return .chineseSimplified
+        }
+        return .english
+    }
+
+    static func setAppLanguage(_ language: AppLanguage) {
+        defaults.set(language.rawValue, forKey: Key.languageCode)
+    }
+
+    static func appTone() -> AppTone {
+        if let stored = defaults.string(forKey: Key.tone),
+           let tone = AppTone(rawValue: stored) {
+            return tone
+        }
+        return .neutral
+    }
+
+    static func setAppTone(_ tone: AppTone) {
+        defaults.set(tone.rawValue, forKey: Key.tone)
+    }
+
     // MARK: - Validation
 
     static func normalizedURLString(_ string: String) -> String {
@@ -58,7 +90,7 @@ struct AppSettings {
         let trimmed = normalizedURLString(string)
         guard let url = URL(string: trimmed),
               let scheme = url.scheme?.lowercased(),
-              scheme == "http" || scheme == "https" else {
+              scheme == "http" || scheme == "https" || scheme == "file" else {
             return false
         }
         return true

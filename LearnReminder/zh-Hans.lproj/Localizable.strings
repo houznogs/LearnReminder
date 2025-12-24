@@ -1,0 +1,134 @@
+"app.name" = "LearnReminder";
+"app.name_cute" = "LearnReminder 小助手";
+
+"tab.home" = "首页";
+"tab.home_cute" = "小窝";
+"tab.connect" = "连接";
+"tab.connect_cute" = "去连接";
+"tab.settings" = "设置";
+"tab.settings_cute" = "偏好";
+
+"language.english" = "英语";
+"language.chinese_simplified" = "简体中文";
+
+"tone.neutral" = "普通/简洁";
+"tone.neutral_cute" = "普通/简洁";
+"tone.cute" = "可爱/温柔";
+"tone.cute_cute" = "可爱/温柔";
+
+"settings.title" = "设置";
+"settings.title_cute" = "喜欢的设置";
+"settings.language_section" = "语言";
+"settings.language_section_cute" = "应用语言";
+"settings.language_hint" = "为应用指定语言，不跟随系统。";
+"settings.language_hint_cute" = "想用哪种语言，告诉我就好～";
+"settings.tone_section" = "语气";
+"settings.tone_section_cute" = "语气风格";
+"settings.tone_hint" = "可爱语气让中文更软萌，普通语气保持简洁。";
+"settings.tone_hint_cute" = "选个语气吧：可爱会撒娇，普通就清清爽爽。";
+
+"connect.title" = "连接日历";
+"connect.title_cute" = "连接你的日历";
+"connect.status_section" = "状态";
+"connect.status_section_cute" = "当前状态";
+"connect.actions_section" = "操作";
+"connect.actions_section_cute" = "快速操作";
+"connect.advanced_section" = "高级";
+"connect.advanced_section_cute" = "高级选项";
+"connect.refresh_now" = "立即刷新";
+"connect.refresh_now_cute" = "马上刷新";
+"connect.disconnect" = "断开链接";
+"connect.disconnect_cute" = "先断开吧";
+"connect.hide_advanced" = "收起高级";
+"connect.hide_advanced_cute" = "收起高级选项";
+"connect.show_advanced" = "展开高级";
+"connect.show_advanced_cute" = "展开高级设置";
+"connect.placeholder_url" = "https://learn.uwaterloo.ca/.../calendar.ics";
+"connect.paste" = "粘贴";
+"connect.paste_cute" = "粘贴一下";
+"connect.save_link" = "保存链接";
+"connect.save_link_cute" = "保存并使用";
+"connect.tip" = "提示：UW Learn → Calendar → Settings → iCal link";
+"connect.tip_cute" = "小提示：UW Learn → Calendar → Settings → iCal link";
+"connect.last_synced" = "上次同步：%@";
+"connect.last_synced_cute" = "上次同步时间：%@";
+"connect.status_invalid_detail" = "链接格式有问题，请粘贴完整的 http(s)/file 地址。";
+"connect.status_invalid_detail_cute" = "链接好像怪怪的，请粘贴完整的 http(s)/file 地址~";
+"connect.status_connected_detail" = "正在使用已保存的 iCal 链接。";
+"connect.status_connected_detail_cute" = "已经在用你保存的 iCal 链接啦。";
+"connect.status_not_connected_detail" = "添加 Learn 的 iCal 链接即可开始同步。";
+"connect.status_not_connected_detail_cute" = "贴上 Learn 的 iCal 链接，就能开始同步喔。";
+
+"status.invalid_link" = "链接无效";
+"status.invalid_link_cute" = "链接怪怪的";
+"status.connected" = "已连接";
+"status.connected_cute" = "已经连上啦";
+"status.not_connected" = "未连接";
+"status.not_connected_cute" = "还没连接哦";
+"status.never" = "从未";
+"status.never_cute" = "还没有";
+
+"error.invalid_url" = "请输入有效的 http/https/file 链接。";
+"error.invalid_url_cute" = "需要完整的 http/https/file 链接哦～";
+"error.sync_failed" = "同步出错：%@";
+"error.sync_failed_cute" = "同步遇到小问题：%@";
+"error.fetch_title" = "无法获取日历，请检查网络或链接。";
+"error.fetch_title_cute" = "日历拉取失败，先检查网络或链接好不好？";
+
+"summary.no_upcoming" = "暂无即将到期的任务";
+"summary.no_upcoming_cute" = "暂时没有新的任务～";
+"summary.next_due" = "下一个：%@%@ 将在 %@ 到期，时间 %@";
+"summary.next_due_cute" = "下一项：%@%@，%@ 后到期，时间 %@喔";
+
+"dashboard.title" = "看板";
+"dashboard.title_cute" = "主页看板";
+"dashboard.section_due_today" = "今天到期";
+"dashboard.section_due_today_cute" = "今天要交的";
+"dashboard.section_this_week" = "本周";
+"dashboard.section_this_week_cute" = "这周安排";
+"dashboard.section_all" = "所有截止";
+"dashboard.section_all_cute" = "全部任务";
+"dashboard.section_completed" = "已完成";
+"dashboard.section_completed_cute" = "完成清单";
+"dashboard.empty_today" = "今天没有到期任务 🎉";
+"dashboard.empty_today_cute" = "今天没有任务要到期，撒花！";
+"dashboard.empty_week" = "接下来 7 天没有任务。";
+"dashboard.empty_week_cute" = "未来 7 天都空空的～";
+"dashboard.empty_upcoming" = "没有更多任务。";
+"dashboard.empty_upcoming_cute" = "暂时没有更多任务啦。";
+"dashboard.more_completed" = "还有 +%d 条已完成";
+"dashboard.more_completed_cute" = "还有 +%d 条完成记录";
+"dashboard.next_due_title" = "下一项";
+"dashboard.next_due_title_cute" = "下一件事";
+"dashboard.no_upcoming_card" = "暂无即将到期的任务。";
+"dashboard.no_upcoming_card_cute" = "还没有新的截止提醒哦。";
+"dashboard.connect_prompt" = "连接日历或稍后再来查看。";
+"dashboard.connect_prompt_cute" = "连上日历或者稍后回来看看吧。";
+
+"search.placeholder" = "搜索截止任务";
+"search.placeholder_cute" = "搜搜你的任务";
+"label.overdue" = "已逾期";
+"label.overdue_cute" = "已经过期啦";
+"filter.all" = "全部";
+"filter.all_cute" = "全部课程";
+"filter.course" = "课程";
+"filter.course_cute" = "课程筛选";
+"loading.syncing" = "正在同步任务...";
+"loading.syncing_cute" = "正在努力同步中...";
+
+"action.try_again" = "重试";
+"action.try_again_cute" = "再试一次吧";
+"action.undo" = "撤销";
+"action.undo_cute" = "撤销一下";
+"action.complete" = "完成";
+"action.complete_cute" = "标记完成";
+
+"empty_state.title" = "没有找到任务，请在 Learn 日历里添加截止时间。";
+"empty_state.title_cute" = "还没有任务，去 Learn 日历里加个截止时间吧。";
+"empty_state.subtitle" = "前往“连接”标签检查你的 iCal 链接。";
+"empty_state.subtitle_cute" = "去“连接”标签确认一下 iCal 链接吧～";
+
+"deadline.date_and_relative" = "%@ · %@";
+"deadline.date_and_relative_cute" = "%@ · %@";
+"course.unknown" = "未命名课程";
+"course.unknown_cute" = "还没取名的课程";

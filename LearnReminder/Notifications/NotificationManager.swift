@@ -4,6 +4,7 @@ import UserNotifications
 struct NotificationManager {
     private let center = UNUserNotificationCenter.current()
     private let identifier = "daily_deadlines"
+    private let localization = LocalizationManager.shared
 
     func requestAuthorization() async throws -> Bool {
         do {
@@ -22,7 +23,7 @@ struct NotificationManager {
         await center.removePendingNotificationRequests(withIdentifiers: [identifier])
 
         let content = UNMutableNotificationContent()
-        content.title = "LearnReminder"
+        content.title = localization.localized("app.name", toneSensitive: false)
         content.body = body
         content.sound = .default
 

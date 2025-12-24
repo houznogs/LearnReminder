@@ -1,0 +1,75 @@
+"app.name" = "LearnReminder";
+
+"tab.home" = "Home";
+"tab.connect" = "Connect";
+"tab.settings" = "Settings";
+
+"language.english" = "English";
+"language.chinese_simplified" = "Simplified Chinese (简体中文)";
+
+"tone.neutral" = "Neutral tone";
+"tone.cute" = "Cute & gentle tone";
+
+"settings.title" = "Settings";
+"settings.language_section" = "Language";
+"settings.language_hint" = "Overrides the system language for the app.";
+"settings.tone_section" = "Tone";
+"settings.tone_hint" = "Cute tone softens Simplified Chinese copy. Neutral stays concise.";
+
+"connect.title" = "Connect Calendar";
+"connect.status_section" = "Status";
+"connect.actions_section" = "Actions";
+"connect.advanced_section" = "Advanced";
+"connect.refresh_now" = "Refresh Now";
+"connect.disconnect" = "Disconnect";
+"connect.hide_advanced" = "Hide Advanced";
+"connect.show_advanced" = "Show Advanced";
+"connect.placeholder_url" = "https://learn.uwaterloo.ca/.../calendar.ics";
+"connect.paste" = "Paste";
+"connect.save_link" = "Save Link";
+"connect.tip" = "Tip: UW Learn → Calendar → Settings → iCal link";
+"connect.last_synced" = "Last synced: %@";
+"connect.status_invalid_detail" = "Link format looks off. Paste a full http(s)/file URL.";
+"connect.status_connected_detail" = "Using saved iCal link.";
+"connect.status_not_connected_detail" = "Add your Learn iCal link to start syncing.";
+
+"status.invalid_link" = "Invalid link";
+"status.connected" = "Connected";
+"status.not_connected" = "Not connected";
+"status.never" = "Never";
+
+"error.invalid_url" = "Please enter a valid http/https/file URL.";
+"error.sync_failed" = "Sync issue: %@";
+"error.fetch_title" = "Couldn’t fetch calendar. Check Wi-Fi or link.";
+
+"summary.no_upcoming" = "No upcoming deadlines";
+"summary.next_due" = "Next: %@%@ due %@ at %@";
+
+"dashboard.title" = "Dashboard";
+"dashboard.section_due_today" = "Due Today";
+"dashboard.section_this_week" = "This Week";
+"dashboard.section_all" = "All Deadlines";
+"dashboard.section_completed" = "Completed";
+"dashboard.empty_today" = "Nothing due today 🎉";
+"dashboard.empty_week" = "No items in the next 7 days.";
+"dashboard.empty_upcoming" = "Nothing upcoming.";
+"dashboard.more_completed" = "+%d more completed";
+"dashboard.next_due_title" = "Next Due";
+"dashboard.no_upcoming_card" = "No upcoming deadlines.";
+"dashboard.connect_prompt" = "Connect your calendar or check back later.";
+
+"search.placeholder" = "Search deadlines";
+"label.overdue" = "Overdue";
+"filter.all" = "All";
+"filter.course" = "Course";
+"loading.syncing" = "Syncing deadlines...";
+
+"action.try_again" = "Try Again";
+"action.undo" = "Undo";
+"action.complete" = "Complete";
+
+"empty_state.title" = "No deadlines found — try adding due dates in Learn Calendar.";
+"empty_state.subtitle" = "Go to the Connect tab to check your iCal link.";
+
+"deadline.date_and_relative" = "%@ • %@";
+"course.unknown" = "Unknown";

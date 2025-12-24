@@ -7,7 +7,18 @@ struct ICalService {
             throw ICalServiceError.invalidURL
         }
 
-        let (data, _) = try await URLSession.shared.data(from: url)
+        let data: Data
+        if url.isFileURL {
+            data = try Data(contentsOf: url)
+        } else {
+            var request = URLRequest(url: url)
+            request.cachePolicy = .reloadIgnoringLocalCacheData
+            let (fetchedData, response) = try await URLSession.shared.data(for: request)
+            guard let http = response as? HTTPURLResponse, (200...299).contains(http.statusCode) else {
+                throw ICalServiceError.invalidResponse
+            }
+            data = fetchedData
+        }
         guard let text = String(data: data, encoding: .utf8) ?? String(data: data, encoding: .isoLatin1) else {
             throw ICalServiceError.unreadableData
         }
@@ -38,7 +49,8 @@ struct ICalService {
         }
 
         let now = Date()
-        let cutoff = Calendar.current.date(byAdding: .day, value: 365, to: now) ?? now
+        let pastCutoff = Calendar.current.date(byAdding: .day, value: -180, to: now) ?? now
+        let futureCutoff = Calendar.current.date(byAdding: .day, value: 365, to: now) ?? now
 
         var unique: [String: DeadlineItem] = [:]
 
@@ -51,7 +63,7 @@ struct ICalService {
 
             let dateString = fields["DUE"] ?? fields["DTEND"] ?? fields["DTSTART"]
             guard let dateString, let dueDate = parseDate(dateString) else { continue }
-            guard dueDate >= now && dueDate <= cutoff else { continue }
+            guard dueDate >= pastCutoff && dueDate <= futureCutoff else { continue }
 
             let item = DeadlineItem(
                 title: summary,
@@ -92,15 +104,27 @@ private func unfoldICSLines(_ text: String) -> [String] {
 private func parsePropertyValue(_ line: String) -> (String?, String?) {
     let parts = line.split(separator: ":", maxSplits: 1).map(String.init)
     guard parts.count == 2 else { return (nil, nil) }
-    let key = parts[0].split(separator: ";", maxSplits: 1).first.map(String.init)
+    let key = parts[0].split(separator: ";", maxSplits: 1).first.map { String($0).uppercased() }
     return (key, parts[1])
 }
 
 private func parseDate(_ value: String) -> Date? {
     let trimmed = value.trimmingCharacters(in: .whitespacesAndNewlines)
+    let parts = trimmed.split(separator: ":", maxSplits: 1).map(String.init)
 
-    if trimmed.hasSuffix("Z") {
-        // UTC formats with optional seconds/minutes
+    var dateText = parts.count == 2 ? parts[1] : trimmed
+    var timeZone: TimeZone? = nil
+
+    if parts.count == 2 {
+        let paramPart = parts[0]
+        // Look for TZID=...
+        if let range = paramPart.range(of: "TZID=", options: .caseInsensitive) {
+            let tzID = String(paramPart[range.upperBound...])
+            timeZone = TimeZone(identifier: tzID)
+        }
+    }
+
+    if dateText.hasSuffix("Z") {
         let formats = [
             "yyyyMMdd'T'HHmmss'Z'",
             "yyyyMMdd'T'HHmm'Z'"
@@ -110,7 +134,7 @@ private func parseDate(_ value: String) -> Date? {
             df.dateFormat = format
             df.locale = Locale(identifier: "en_US_POSIX")
             df.timeZone = TimeZone(secondsFromGMT: 0)
-            if let date = df.date(from: trimmed) { return date }
+            if let date = df.date(from: dateText) { return date }
         }
     }
 
@@ -123,8 +147,8 @@ private func parseDate(_ value: String) -> Date? {
         let df = DateFormatter()
         df.dateFormat = format
         df.locale = Locale(identifier: "en_US_POSIX")
-        df.timeZone = TimeZone.current
-        if let date = df.date(from: trimmed) { return date }
+        df.timeZone = timeZone ?? TimeZone.current
+        if let date = df.date(from: dateText) { return date }
     }
 
     return nil
@@ -144,7 +168,7 @@ private func courseName(from summary: String, categories: String?) -> String {
         }
     }
 
-    return "Unknown"
+    return DeadlineItem.unknownCoursePlaceholder
 }
 
 private func looksLikeCourseCode(_ text: String) -> Bool {
@@ -159,4 +183,5 @@ private func looksLikeCourseCode(_ text: String) -> Bool {
 enum ICalServiceError: Error {
     case invalidURL
     case unreadableData
+    case invalidResponse
 }
